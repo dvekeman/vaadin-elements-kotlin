@@ -2,29 +2,20 @@ package client
 
 import kotlinx.html.dom.append
 import kotlinx.html.js.h1
-import org.w3c.dom.HTMLElement
 import vaadin.vaadin_button
 import vaadin.vaadin_text_field
 import kotlin.browser.document
 import kotlin.browser.window
 
-@JsModule("@vaadin/vaadin-button")
-@JsNonModule
-external val vbutton: HTMLElement? = definedExternally
-
-@JsModule("@vaadin/vaadin-text-field")
-@JsNonModule
-external val vtextfield: HTMLElement? = definedExternally
-
+external fun require(module:String):dynamic
 
 /**
  * The main entry point.
  * This function is called by default if `main = "call"` in compileKotlin2Js (see build.gradle.kts)
  */
 fun main() {
-
-    console.log(vbutton?.toString())
-    console.log(vtextfield?.toString())
+    require("@vaadin/vaadin-button")
+    require("@vaadin/vaadin-text-field")
 
     val mainDiv = document.getElementById("main")
 
